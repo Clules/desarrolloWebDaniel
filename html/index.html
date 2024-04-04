@@ -2,69 +2,130 @@
 <html>
   <head>
     <link rel="stylesheet" href="styles.css" />
+    <title>Psets</title>
+    <h1 class="encabezado_01">Daniel Estrada Ocaña
+      <img src="https://cdn.iconscout.com/icon/free/png-256/free-javascript-2038874-1720087.png" class="imagen2"></h1>
   </head>
   <body>
-    <h1 class="encabezado_01">Medium</h1>
+    <div>
+      <h1 class="encabezado_02" id="home">Javascript programming language</h1>
+      <p class="texto">
+        JavaScript is a versatile programming language commonly used for web
+        development. It enables developers to create interactive and dynamic
+        content on web pages, enhancing user experience and functionality.
+      </p>
+      <img src="https://logos-world.net/wp-content/uploads/2023/02/JavaScript-Symbol.png" class="imagen" />
+      <p class="texto2">
+        JavaScript is a key component of modern web development alongside HTML
+        and CSS. In this article, we'll delve into some fundamental concepts of
+        JavaScript, including variables, loops, and operators.
+      </p>
+    </div>
+    <div>
+      <h1 class="encabezado_02"><a href="#home">Home</a></h1>
+      <ul class="texto3">
+        Index
+        <br /><br />
+        <li><a href="#varia"> 1: Variables in JavaScript</a></li>
+        <li><a href="#varia1">1.1: What are them?</a></li>
+        <li><a href="#varia2">1.2: Types of variables in JS</a></li>
+        <br /><br />
+        <li><a href="#ope">2: Operators in JavaScript</a></li>
+        <li><a href="#ope1">2.1: What are them?</a></li>
+        <li><a href="#ope2">2.2: Types of operators in JS</a></li>
+        <br /><br />
+        <li><a href="#loop">3: Loops in JavaScript</a></li>
+        <li><a href="#loop1">3.1: What are them?</a></li>
+        <li><a href="#loop2">3.2: Types of loops in JS</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h1 id="varia" class="encabezado_02">1: Variables in JavaScript</h1>
+      <p id="varia1" class="texto2">
+        1.1: What are them? <br /><br />
+        Variables are containers used to store data values in JavaScript. They
+        provide a way to reference and manipulate data throughout the execution
+        of a program. In JavaScript, variables are declared using the var, let,
+        or const keywords.
+      </p>
+      <br />
+      <p id="varia2" class="texto2">
+        1.2: Types of variables in JS<br />
+        <ul class="texto2">
+          <li>
+          var: Historically used for variable declaration. Variables declared
+          with var have function scope or global scope.
+          </li>
+          <li>
+          let: Introduced in ES6, let allows block-scoped variables. Variables
+          declared with let can be reassigned but not re-declared in the same
+          scope.
+          </li>
+          <li>
+          const: Also introduced in ES6, const declares constants that cannot be
+          reassigned or re-declared. However, it doesn't make objects immutable;
+          only the binding is immutable.
+          </li>
+          <br />
+        </ul>
+        <img src="./imagen/var.png" class="imagen"/>
+      </p>
+    </div>
+    <div>
+      <h1 id="ope" class="encabezado_02">2: Operators in JavaScript</h1>
+      <p id="ope1" class="texto2">
+        2.1: What are them? <br /><br />
+        Operators are symbols used to perform operations on operands. JavaScript supports various types of operators, including arithmetic, assignment, comparison, logical, and more.
+      </p>
+      <p id="ope2" class="texto2">
+        2.2: Types of operators in JS <br />
+        <ul class="texto2">
+          <li>
+            Arithmetic operators: +, -, *, /, %
+          </li>
+          <li>
+            Assignment operators: =, +=, -=, *=, /=, %=
+          </li>
+          <li>
+            Comparison operators: ==, !=, ===, !==, >, <, >=, <=
+          </li>
+          <li>
+            Logical operators: &&, ||, !
+          </li>
+          <li>
+            Ternary operator: condition ? expr1 : expr2
+          </li>
+          <li>
+            Increment/Decrement operators: ++, --
+          </li>
+          <br />
+        </ul>
+        <img src="./imagen/ope.png" class="imagen" />
+      </p>
+    </div>
+    <div>
+      <h1 id="loop" class="encabezado_02">
+        3: Loops in JavaScript
+      </h1>
+      <p id="loop1" class="texto2">
+        3.1: What are them?<br><br>Loops are used to execute a block of code repeatedly until a specified condition is met. JavaScript supports several types of loops, including for, while, and do-while. Each loop type offers different ways to control the iteration flow.
+      </p>
+      <p id="loop2" class="texto2"> 3.2: Types of loops in JS
+        <ul class="texto2">
+          <li>
+            for loop: Executes a block of code a specified number of times.
+          </li>
+          <li>
+            while loop: Executes a block of code while a specified condition is true.
+          </li>
+          <li>
+            do-while loop: Similar to the while loop but guarantees the code block is executed at least once, even if the condition is false.
+          </li>
+          <br>
+        </ul>
+      </p>
+      <img src="./imagen/loop.png" class="imagen"/>
+    </div>
   </body>
-  <div>
-    <h1 class="encabezado_02" id="home">The Math Behind Neural Networks</h1>
-    <p class="texto">
-      Dive into Neural Networks, the backbone of modern AI, understand its
-      mathematics, implement it from scratch, and explore its applications
-    </p>
-    <img src="imagen\img.png" class="imagen" />
-    <p class="texto2">
-      Neural networks are at the core of artificial intelligence (AI),
-      <br />fueling a variety of applications from spotting objects in photos<br />
-      to translating languages. In this article, we’ll dive into what<br />
-      neural networks are, how they work, and why they’re<br />
-      a big deal in our technology-driven world today.
-    </p>
-  </div>
-  <div>
-    <p class="texto2"><a href="#home">Home</a></p>
-    <ul class="texto3">
-      Index
-      <li><a href="#basics"> 1: Understanding the Basics</a></li>
-      <li>1.1: What are Neural Networks?</li>
-      <li>1.2: Types of Neural Networks</li>
-      <br /><br />
-      <li>2: The Architecture of Neural Networks</li>
-      <li>2.1: The Structure of a Neuron</li>
-      <li>2.2: Layers</li>
-      <li>2.3: The Role of Layers in Learning</li>
-      <li>1.1: What are Neural Networks?</li>
-      <br /><br />
-      <li>3: The Mathematics of Neural Networks</li>
-      <li>3.1: Weighted Sum</li>
-      <li>3.2: Activation Functions</li>
-      <li>3.3: Backpropagation: The Core of Neural Learning</li>
-      <li>3.4: Step by Step example</li>
-      <li>3.5: Improvements</li>
-      <br /><br />
-      <li>4: Implementing Neural Networks</li>
-      <li>4.1: Building a Simple Neural Network in Python</li>
-      <li>
-        4.2: Utilizing Libraries for Neural Network Implementation (TensorFlow)
-      </li>
-      <br /><br />
-      <li>5: Challenges</li>
-      <li>5.1: Overcoming Overfitting</li>
-      <br /><br />
-
-      <li>6: Conclusion</li>
-
-      <div>
-        <h1 id="basics">1: Understanding the Basics</h1>
-        <p>
-          1.1: What are Neural Networks? Neural networks are a cool blend of
-          biology and computer science, inspired by our brain’s setup to tackle
-          complicated computing tasks. Essentially, they’re algorithms designed
-          to spot patterns and make sense of sensory data, which lets them do a
-          ton of stuff like recognizing faces, understanding spoken words,
-          making predictions, and understanding natural language.
-        </p>
-      </div>
-    </ul>
-  </div>
 </html>
