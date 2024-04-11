@@ -1,0 +1,13 @@
+.poke-menu-show {
+  width: 65px; /* Adjust as needed */
+  height: 65px; /* Adjust as needed */
+  margin: 0px; /* Adjust as needed */
+}
+
+.pokemon-screen {
+  margin-top: 0%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

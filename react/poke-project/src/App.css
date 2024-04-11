@@ -62,20 +62,7 @@ hr {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-.screen-show img {
-  width: 65px; /* Adjust as needed */
-  height: 65px; /* Adjust as needed */
-  margin: 0px; /* Adjust as needed */
-}
-
-.pokemon-screen {
-  margin-top: 0%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
 }
 
 .battery-show {
@@ -87,15 +74,12 @@ hr {
 
 .battery-point {
   width: 3px;
-  height: 3px;
-  border: solid red;
-  background-color: red;
+  height: 15px;
+  border: solid rgb(0, 0, 0);
+  background-color: black;
   border-radius: 100%;
   margin-top: 120%;
   margin-left: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .image {
@@ -240,4 +224,17 @@ hr {
 .cruz {
   display: flex;
   flex-direction: column;
+}
+
+.screen-show-off {
+  width: 260px;
+  height: 155px;
+  border: solid 5px black;
+  border-radius: 2%;
+  margin-left: 5%;
+  margin-top: 0%;
+  margin-right: 10%;
+  /*background-image: url("https://preview.redd.it/d9spuwer2c491.png?width=1050&format=png&auto=webp&s=9ca8c75c63da9f8bb134e955d73e2770d073375e");*/
+  background-color: black;
+  background-size: 100% 100%;
 }

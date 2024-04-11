@@ -1,5 +1,17 @@
 .poke-user {
-  width: 400px;
-  height: 40px;
-  margin-top: 30%;
+  width: 65px;
+  height: 65px;
+  margin-top: 70%;
+}
+
+.poke-comp {
+  width: 60px;
+  height: 60px;
+  margin-top: 25%;
+}
+
+.battle-screen {
+  display: flex;
+  justify-content: space-around;
+  width: auto;
 }
