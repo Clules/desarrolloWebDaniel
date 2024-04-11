@@ -9,6 +9,7 @@ function App() {
   const [pokemones, setPokemones] = useState([]);
   const [position, setPosition] = useState(0);
   const [myPokeSelection, setMyPokeSelection] = useState([]);
+  const [compSelection, setcompSelection] = useState([]);
 
   const [startG, setStart] = useState(false);
 
@@ -42,11 +43,13 @@ function App() {
   };
 
   const filterSelection = () => {
-    const mySelection = pokemones.filter((value, idx) => position == idx);
-    setMyPokeSelection(mySelection);
-    console.log(mySelection);
+    if (!startG) {
+      const mySelection = pokemones.filter((value, idx) => position == idx);
+      setMyPokeSelection(mySelection);
+      console.log(mySelection);
 
-    computerSelection();
+      computerSelection();
+    } else return;
   };
 
   const computerSelection = () => {
@@ -54,8 +57,8 @@ function App() {
     const computerSelect = pokemones.filter(
       (value, idx) => computerPos === idx
     );
+    setcompSelection(computerSelect);
     console.log(computerSelect);
-    return computerSelect;
   };
 
   const startGame = (star) => {
@@ -83,7 +86,9 @@ function App() {
 
                 <div className="battery-show">
                   <div className="battery-point-container">
-                    <div className="battery-point"></div>
+                    <div className="battery-point">
+                      <button className="button-on"></button>
+                    </div>
                     <br />
                     <p className="texto4">Battery</p>
                   </div>
@@ -93,10 +98,7 @@ function App() {
                       position={position}
                     />
                   ) : (
-                    <Start
-                      poke1={myPokeSelection}
-                      poke2={computerSelection()}
-                    />
+                    <Start poke1={myPokeSelection} poke2={compSelection} />
                   )}
                 </div>
               </div>
