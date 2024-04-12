@@ -1,0 +1,47 @@
+@import url("https://fonts.cdnfonts.com/css/pretendo");
+
+.screen-show-info {
+  width: 80%;
+  height: 80%;
+  border: solid 2px black;
+  border-radius: 2%;
+  margin: 5%;
+  /*background-image: url("https://preview.redd.it/d9spuwer2c491.png?width=1050&format=png&auto=webp&s=9ca8c75c63da9f8bb134e955d73e2770d073375e");*/
+  background-color: lightgreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  opacity: 0.8;
+}
+
+.texto-info1 {
+  font-family: "pretendo", sans-serif;
+  font-size: 12px;
+  text-align: center;
+  margin: 5px;
+  background-color: white;
+  color: black;
+  border-radius: 20%;
+}
+
+.texto-info2 {
+  font-family: "pretendo", sans-serif;
+  font-size: 8px;
+  color: black;
+  text-align: center;
+  margin: 5px;
+  margin-bottom: 20%;
+}
+
+.button-back {
+  border: solid white;
+  background-color: black;
+  color: white;
+  font-family: "pretendo", sans-serif;
+  height: auto;
+  width: 40px;
+  align-items: center;
+  margin-left: 0%;
+  text-align: center;
+  font-size: 5px;
+}

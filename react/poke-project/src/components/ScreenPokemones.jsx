@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./ScreenPokemones.css";
 import BackgroundGif from "./BackgroundGif";
 
-const ScreenPokemones = ({ pokemones, position, selected, gifVisble }) => {
-  const [gifVisible, setGifVisible] = useState(true);
+const ScreenPokemones = ({ pokemones, position, selected, gif }) => {
+  const [gifVisible, setGifVisible] = useState(gif);
 
   // Function to handle GIF visibility change
   const handleGifVisibilityChange = (isVisible) => {
@@ -20,8 +20,6 @@ const ScreenPokemones = ({ pokemones, position, selected, gifVisble }) => {
           duration={11000}
         />
       ) : (
-        // Render pokemones when the GIF is not visible
-
         pokemones.map(
           (pokemon, index) => (
             //index % 3 === 0 && (
@@ -47,6 +45,7 @@ const ScreenPokemones = ({ pokemones, position, selected, gifVisble }) => {
                 alt="front-default"
                 className="poke-menu-show"
               />
+
               {pokemon.name}
             </div>
           )

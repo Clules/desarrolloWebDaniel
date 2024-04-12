@@ -5,17 +5,23 @@ import "./App.css";
 import ScreenPokemones from "./components/ScreenPokemones";
 import Start from "./components/Start";
 import BackgroundGif from "./components/BackgroundGif";
+import HealthBar from "./components/HealthBar";
+import EndScreen from "./components/EndScreen";
+import Info from "./components/Info";
 
 function App() {
   const [pokemones, setPokemones] = useState([]);
   const [position, setPosition] = useState(0);
+  const [positionUD, setPositionUD] = useState(1);
   const [myPokeSelection, setMyPokeSelection] = useState([]);
   const [compSelection, setcompSelection] = useState([]);
   const [flag, setFlag] = useState(false);
   const [selected, setSelected] = useState(false);
-  //const [gifVisible, setGifVisible] = useState(true);
-
+  const [damage, setDamage] = useState(0);
+  const [health, setHealth] = useState(100);
+  const [gifVisible, setGifVisible] = useState(true);
   const [startG, setStart] = useState(false);
+  const [infoM, setInfoM] = useState(false);
 
   const pokeUrl = "https://pokeapi.co/api/v2/pokemon";
 
@@ -48,6 +54,15 @@ function App() {
     console.log(position);
   };
 
+  const handleSelectionUD = (direction) => {
+    if (direction && positionUD < 2) {
+      setPositionUD(positionUD + 1);
+    } else if (!direction && positionUD > 1) {
+      setPositionUD(positionUD - 1);
+    }
+    console.log(positionUD);
+  };
+
   const filterSelection = (x) => {
     if (!startG) {
       const mySelection = pokemones.filter((value, idx) => position == idx);
@@ -57,7 +72,11 @@ function App() {
       computerSelection();
       x = !selected;
       setSelected(x);
-    } else return;
+    } else if (positionUD == 2) {
+      reset(false);
+    } else if (positionUD == 1) {
+      setInfoM(true);
+    }
   };
 
   const computerSelection = () => {
@@ -79,17 +98,27 @@ function App() {
           "#000000")
       : (document.getElementById("button-onof").style.backgroundColor = "red");
 
-    reset();
-
+    reset(true);
     setFlag(!a);
-
     console.log(flag);
   };
 
-  const reset = () => {
+  const attackButton = (key) => {
+    let currentHealth = health;
+
+    if (startG) {
+      const dama = Math.floor(Math.random() * (key == "a" ? 60 : 20));
+      setDamage(dama);
+      setHealth(currentHealth - dama);
+    }
+  };
+
+  const reset = (x) => {
+    setHealth(100);
     setStart(false);
     setSelected(false);
     setPosition(0);
+    setGifVisible(x);
   };
 
   // const backScreen = () => {
@@ -133,10 +162,19 @@ function App() {
                         pokemones={pokemones}
                         position={position}
                         selected={selected}
+                        gif={gifVisible}
                         //gifVisible={gifVisible}
                       />
                     ) : (
-                      <Start poke1={myPokeSelection} poke2={compSelection} />
+                      <Start
+                        poke1={myPokeSelection}
+                        poke2={compSelection}
+                        damage={damage}
+                        health={health}
+                        positionUD={positionUD}
+                        infoM={infoM}
+                        setInfoM={setInfoM}
+                      />
                     )
                   ) : (
                     <div className="screen-show-off"></div>
@@ -158,8 +196,14 @@ function App() {
                 ></button>
               </div>
               <div className="cruz">
-                <button className="button-top"></button>
-                <button className="button-bottom"></button>
+                <button
+                  className="button-top"
+                  onClick={() => handleSelectionUD(false)}
+                ></button>
+                <button
+                  className="button-bottom"
+                  onClick={() => handleSelectionUD(true)}
+                ></button>
               </div>
               <div>
                 <button
@@ -186,11 +230,21 @@ function App() {
             </div>
             <div className="container-action">
               <div className="button-b-container">
-                <button className="button-b"></button>
+                <button
+                  className="button-b"
+                  onClick={() => {
+                    attackButton("b");
+                  }}
+                ></button>
                 <div className="texto3">b</div>
               </div>
               <div className="button-a-container">
-                <button className="button-a"></button>
+                <button
+                  className="button-a"
+                  onClick={() => {
+                    attackButton("a");
+                  }}
+                ></button>
                 <div className="texto3">a</div>
               </div>
             </div>
