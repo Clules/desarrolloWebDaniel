@@ -26,16 +26,32 @@ const Start = ({ poke1, poke2 }) => {
         />
       ) : (
         <div className="battle-screen">
-          <img
-            src={poke1[0].sprites.back_default}
-            alt="front-default"
-            className="poke-user"
-          />
-          <img
-            src={poke2[0].sprites.front_default}
-            alt="front-default"
-            className="poke-comp"
-          />
+          <div className="layout-poke-comp">
+            <p className="show-poke-info-comp">{poke2[0].name}</p>
+            <div className="health-bar">
+              <div className="bar">
+                <div className="hit"></div>
+              </div>
+            </div>
+            <img
+              src={poke1[0].sprites.back_default}
+              alt="front-default"
+              className="poke-user"
+            />
+          </div>
+          <div className="layout-poke-user">
+            <img
+              src={poke2[0].sprites.front_default}
+              alt="front-default"
+              className="poke-comp"
+            />
+            <p className="show-poke-info-user">{poke1[0].name}</p>
+            <div className="health-bar">
+              <div className="bar">
+                <div className="hit"></div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
