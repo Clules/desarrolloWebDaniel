@@ -12,12 +12,15 @@ const HealthBar = ({ damage, health }) => {
     barWidth = 0;
     hitWidth = 0;
   }
+
+  console.log("damage: " + damage);
+
+  console.log("vida: " + health);
+
   return (
     <div className="health-bar">
-      {console.log("damage: " + damage)}
-      {console.log("vida: " + health)}
       <div className="bar" style={{ width: `${barWidth}%` }}>
-        {<div className="hit" style={{ width: `${hitWidth}%` }}></div>}
+        <div className="hit" style={{ width: `${hitWidth}%` }}></div>
       </div>
     </div>
   );

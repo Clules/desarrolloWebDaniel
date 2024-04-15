@@ -8,6 +8,7 @@ import BackgroundGif from "./components/BackgroundGif";
 import HealthBar from "./components/HealthBar";
 import EndScreen from "./components/EndScreen";
 import Info from "./components/Info";
+import BattleFight from "./components/BattleFight";
 
 function App() {
   const [pokemones, setPokemones] = useState([]);
@@ -22,6 +23,8 @@ function App() {
   const [gifVisible, setGifVisible] = useState(true);
   const [startG, setStart] = useState(false);
   const [infoM, setInfoM] = useState(false);
+  const [attackMenu, setAttackMenu] = useState(false);
+  const [attackType, setAttackType] = useState("");
 
   const pokeUrl = "https://pokeapi.co/api/v2/pokemon";
 
@@ -55,12 +58,21 @@ function App() {
   };
 
   const handleSelectionUD = (direction) => {
-    if (direction && positionUD < 2) {
-      setPositionUD(positionUD + 1);
-    } else if (!direction && positionUD > 1) {
-      setPositionUD(positionUD - 1);
+    if (!attackMenu) {
+      if (direction && positionUD < 2) {
+        setPositionUD(positionUD + 1);
+      } else if (!direction && positionUD > 1) {
+        setPositionUD(positionUD - 1);
+      }
+      console.log(positionUD);
+    } else {
+      if (direction && positionUD < 5) {
+        setPositionUD(positionUD + 1);
+      } else if (!direction && positionUD > 0) {
+        setPositionUD(positionUD - 1);
+      }
+      console.log(positionUD);
     }
-    console.log(positionUD);
   };
 
   const filterSelection = (x) => {
@@ -72,10 +84,20 @@ function App() {
       computerSelection();
       x = !selected;
       setSelected(x);
-    } else if (positionUD == 2) {
-      reset(false);
-    } else if (positionUD == 1) {
-      setInfoM(true);
+    } else if (!infoM && !attackMenu) {
+      if (positionUD == 2) {
+        reset(false);
+      } else if (positionUD == 1) {
+        setInfoM(true);
+      }
+    } else if (infoM && !attackMenu) {
+      setInfoM(false);
+    } else if (attackMenu && !infoM) {
+      console.log(attackMenu);
+      setSelected(true);
+      setAttackMenu(false);
+
+      console.log("atras");
     }
   };
 
@@ -89,7 +111,7 @@ function App() {
   };
 
   const startGame = (star) => {
-    selected ? setStart(star) : console.log(star);
+    selected ? (setStart(star), setSelected(false)) : console.log(star);
   };
 
   const buttonOn = (a) => {
@@ -106,7 +128,10 @@ function App() {
   const attackButton = (key) => {
     let currentHealth = health;
 
-    if (startG) {
+    if (startG && key == "b") {
+      console.log("menu b");
+      setAttackMenu(true);
+    } else {
       const dama = Math.floor(Math.random() * (key == "a" ? 60 : 20));
       setDamage(dama);
       setHealth(currentHealth - dama);
@@ -174,12 +199,15 @@ function App() {
                         positionUD={positionUD}
                         infoM={infoM}
                         setInfoM={setInfoM}
+                        attackMenu={attackMenu}
+                        setAttackMenu={setAttackMenu}
+                        setPositionUD={setPositionUD}
+                        selected={selected}
                       />
                     )
                   ) : (
                     <div className="screen-show-off"></div>
                   )}
-                  ;
                 </div>
               </div>
             </div>

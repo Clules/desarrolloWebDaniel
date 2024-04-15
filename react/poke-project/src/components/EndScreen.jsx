@@ -3,21 +3,25 @@ import React, { useState } from "react";
 import "./EndScreen.css";
 import Info from "./Info";
 
-const EndScreen = ({ positionUD, infoM, setInfoM }) => {
+const EndScreen = ({ positionUD, infoM, setInfoM, setPositionUD }) => {
   const [gifVisible, setGifVisible] = useState(true);
 
   const handleGifVisibilityChange = (isVisible) => {
     setGifVisible(isVisible);
   };
+
   console.log(positionUD);
   return (
     <div className="end-screen">
       {gifVisible ? (
-        <BackgroundGif
-          gifUrl="https://mir-s3-cdn-cf.behance.net/project_modules/disp/fecdc569547177.5b855342c669f.gif"
-          onVisibilityChange={handleGifVisibilityChange}
-          duration={3000}
-        />
+        <div>
+          <BackgroundGif
+            gifUrl="https://mir-s3-cdn-cf.behance.net/project_modules/disp/fecdc569547177.5b855342c669f.gif"
+            onVisibilityChange={handleGifVisibilityChange}
+            duration={3000}
+          />
+          {setPositionUD(1)}
+        </div>
       ) : !infoM ? (
         <div>
           {positionUD == 1 ? (

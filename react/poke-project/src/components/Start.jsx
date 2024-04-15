@@ -3,6 +3,7 @@ import "./Start.css";
 import BackgroundGif from "./BackgroundGif";
 import HealthBar from "./HealthBar";
 import EndScreen from "./EndScreen";
+import BattleFight from "./BattleFight";
 
 const Start = ({
   poke1,
@@ -12,6 +13,11 @@ const Start = ({
   positionUD,
   infoM,
   setInfoM,
+  attackMenu,
+  setAttackMenu,
+  setPositionUD,
+  selected,
+  setSelected,
 }) => {
   const [gifVisible, setGifVisible] = useState(true);
 
@@ -46,9 +52,18 @@ const Start = ({
 
       {!gifVisible && health > 0 && (
         <div className="battle-screen">
+          <BattleFight
+            damage={damage}
+            attackMenu={attackMenu}
+            setAttackMenu={setAttackMenu}
+            positionUD={positionUD}
+            selected={selected}
+          />
+
           <div className="layout-poke-comp">
             <p className="show-poke-info-comp">{poke2[0].name}</p>
             <HealthBar damage={damage} health={health} />
+
             <img
               src={poke1[0].sprites.back_default}
               alt="front-default"
@@ -68,7 +83,14 @@ const Start = ({
       )}
 
       {!gifVisible && health <= 0 && (
-        <EndScreen positionUD={positionUD} infoM={infoM} setInfoM={setInfoM} />
+        <div>
+          <EndScreen
+            positionUD={positionUD}
+            infoM={infoM}
+            setInfoM={setInfoM}
+            setPositionUD={setPositionUD}
+          />
+        </div>
       )}
     </div>
   );

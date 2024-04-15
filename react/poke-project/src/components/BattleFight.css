@@ -1,0 +1,75 @@
+@import url("https://fonts.cdnfonts.com/css/pretendo");
+
+.text-on-top {
+  position: absolute; /* Set to relative */
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+
+.attack-list {
+  position: absolute;
+  z-index: 9999;
+  width: 90%;
+  height: 90%;
+  margin-top: 7px;
+  margin-left: 7px;
+  margin-bottom: 10px;
+  border: solid black;
+  background-color: lightgreen;
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.voer {
+  overflow: auto;
+}
+
+.attack-name {
+  font-size: 12px;
+  text-align: left;
+  padding: 5px;
+  margin: 2px;
+  border: solid black 1px;
+  color: black;
+  font-family: "pretendo", sans-serif;
+  background-color: white;
+}
+
+.pop-outin {
+  animation: 3s anim-popoutin ease infinite;
+  font-size: 12px;
+  font-family: "pretendo", sans-serif;
+  text-align: center;
+}
+
+@keyframes anim-popoutin {
+  0% {
+    color: white;
+    transform: scale(0);
+    opacity: 0;
+    text-shadow: 0 0 0 rgba(204, 201, 201, 0);
+  }
+  25% {
+    color: white;
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 2px 10px 5px rgba(211, 206, 206, 0.5);
+  }
+  50% {
+    color: white;
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 1px 0 0 rgba(238, 231, 231, 0);
+  }
+  100% {
+    /* animate nothing to add pause at the end of animation */
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 1px 0 0 rgba(248, 239, 239, 0);
+  }
+}

@@ -13,14 +13,14 @@ const Info = ({ setInfoM }) => {
         This gameboy was design to play pokemon completely arranged, you will
         always win
       </p>
-      <button
+      <div
         className="button-back"
-        onClick={() => {
-          changeInfo();
-        }}
+        // onClick={() => {
+        //   changeInfo();
+        // }}
       >
         Back
-      </button>
+      </div>
     </div>
   );
 };
