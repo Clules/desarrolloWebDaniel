@@ -2,7 +2,7 @@ const Login = () => {
   return (
     <>
       <div
-        className="container px-6 mx-auto "
+        className="container px-5 mx-auto w-fit"
         style={{
           background:
             "linear-gradient(to right, rgba(0,0,0,.4),rgba(0,255,0,.7))",
@@ -18,7 +18,7 @@ const Login = () => {
               />
             </div>
           </div>
-          <div className="w-full md:w-full lg:w-9/12 mx-auto md:mx-0">
+          <div className="w-full md:w-full lg:w-3/4 mx-auto md:mx-0">
             <div className="bg-white p-10 flex flex-col w-full shadow-xl rounded-xl">
               <h2 className="text-2xl font-bold text-gray-800 text-left mb-5">
                 Login

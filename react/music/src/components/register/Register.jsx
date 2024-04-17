@@ -2,7 +2,7 @@ const Register = () => {
   return (
     <>
       <div
-        className="container px-6 mx-auto "
+        className="container px-5 mx-auto pt-3 pb-3 min-w-dvh"
         style={{
           background:
             "linear-gradient(to right, rgba(0,0,0,.2),rgba(0,255,0,.7))",
@@ -12,9 +12,9 @@ const Register = () => {
           src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
           alt="spoti-intro"
           style={{ width: "10%" }}
-          className="mt-4"
+          className="mt-0"
         />
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center h-full">
           <div className="bg-white p-10 flex flex-col w-full shadow-xl rounded-xl lg:w-2/5 md:w-1/2 w-2/3 ">
             <h2 className="text-2xl font-bold text-gray-800 text-center mb-5">
               Register

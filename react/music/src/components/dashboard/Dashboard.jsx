@@ -1,286 +1,45 @@
 const Dashboard = () => {
   return (
     <>
-      <div className="min-h-full">
-        <nav className="bg-gray-800">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 items-center justify-between">
-              <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <img
-                    className="h-8 w-8"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
-                </div>
-                <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
-                    <a
-                      href="#"
-                      className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
-                      aria-current="page"
-                    >
-                      Dashboard
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                    >
-                      Team
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                    >
-                      Projects
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                    >
-                      Calendar
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                    >
-                      Reports
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="hidden md:block">
-                <div className="ml-4 flex items-center md:ml-6">
-                  <button
-                    type="button"
-                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="absolute -inset-1.5"></span>
-                    <span className="sr-only">View notifications</span>
-                    <svg
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                      />
-                    </svg>
-                  </button>
-
-                  <div className="relative ml-3">
-                    <div>
-                      <button
-                        type="button"
-                        className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                        id="user-menu-button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                      >
-                        <span className="absolute -inset-1.5"></span>
-                        <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                      </button>
-                    </div>
-
-                    <div
-                      className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="user-menu-button"
-                      tabIndex="-1"
-                    >
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700"
-                        role="menuitem"
-                        tabIndex="-1"
-                        id="user-menu-item-0"
-                      >
-                        Your Profile
-                      </a>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700"
-                        role="menuitem"
-                        tabIndex="-1"
-                        id="user-menu-item-1"
-                      >
-                        Settings
-                      </a>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700"
-                        role="menuitem"
-                        tabIndex="-1"
-                        id="user-menu-item-2"
-                      >
-                        Sign out
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="-mr-2 flex md:hidden">
-                <button
-                  type="button"
-                  className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  aria-controls="mobile-menu"
-                  aria-expanded="false"
-                >
-                  <span className="absolute -inset-0.5"></span>
-                  <span className="sr-only">Open main menu</span>
-
-                  <svg
-                    className="block h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                    />
-                  </svg>
-
-                  <svg
-                    className="hidden h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
+      <div
+        className="container p-0  h-screen m-0 flex flex-row w-dvh pt-1"
+        style={{
+          background: "black",
+        }}
+      >
+        <div className="flex flex-col text-center h-screen justify-evenly md:items-center text-black w-1/6 pl-2">
+          <div className="h-1/6 w-full bg-zinc-900 mx-1 mt-2 mb-1 shadow-xl rounded-md flex flex-col justify-around py-9">
+            <button class="relative rounded-lg px-1 py-3 my-1 mx-0 h-10 flex flex-row text-white stroke-white fill-white hover:text-green-500 hover:fill-green-500 hover:stroke-green-500 hover:underline">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 50 50"
+                className="w-1/3 h-full stroke-currentColor fill-currentColor "
+              >
+                {" "}
+                <path d="M 25 1.0507812 C 24.7825 1.0507812 24.565859 1.1197656 24.380859 1.2597656 L 1.3808594 19.210938 C 0.95085938 19.550938 0.8709375 20.179141 1.2109375 20.619141 C 1.5509375 21.049141 2.1791406 21.129062 2.6191406 20.789062 L 4 19.710938 L 4 46 C 4 46.55 4.45 47 5 47 L 19 47 L 19 29 L 31 29 L 31 47 L 45 47 C 45.55 47 46 46.55 46 46 L 46 19.710938 L 47.380859 20.789062 C 47.570859 20.929063 47.78 21 48 21 C 48.3 21 48.589063 20.869141 48.789062 20.619141 C 49.129063 20.179141 49.049141 19.550938 48.619141 19.210938 L 25.619141 1.2597656 C 25.434141 1.1197656 25.2175 1.0507812 25 1.0507812 z M 35 5 L 35 6.0507812 L 41 10.730469 L 41 5 L 35 5 z" />
+              </svg>
+              <p class="text-xs font-normal text-left align-middle">Home</p>
+            </button>
+            <button class="relative rounded-lg px-1 py-3 my-1 mx-0 h-10 flex flex-row text-white stroke-white fill-white hover:text-green-500 hover:fill-green-500 hover:stroke-green-500 hover:underline">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 50 50"
+                className="w-1/3 h-full stroke-currentColor fill-currentColor "
+              >
+                {" "}
+                <path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z" />
+              </svg>
+              <p class="text-xs font-normal text-left align-middle">Search</p>
+            </button>
           </div>
-
-          <div className="md:hidden" id="mobile-menu">
-            <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-              <a
-                href="#"
-                className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-                aria-current="page"
-              >
-                Dashboard
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-              >
-                Team
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-              >
-                Projects
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-              >
-                Calendar
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-              >
-                Reports
-              </a>
-            </div>
-            <div className="border-t border-gray-700 pb-3 pt-4">
-              <div className="flex items-center px-5">
-                <div className="flex-shrink-0">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                </div>
-                <div className="ml-3">
-                  <div className="text-base font-medium leading-none text-white">
-                    Tom Cook
-                  </div>
-                  <div className="text-sm font-medium leading-none text-gray-400">
-                    tom@example.com
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="absolute -inset-1.5"></span>
-                  <span className="sr-only">View notifications</span>
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="mt-3 space-y-1 px-2">
-                <a
-                  href="#"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                >
-                  Your Profile
-                </a>
-                <a
-                  href="#"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                >
-                  Settings
-                </a>
-                <a
-                  href="#"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                >
-                  Sign out
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-
-        <header className="bg-white shadow">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              Dashboard
-            </h1>
-          </div>
-        </header>
-        <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8"></div>
-        </main>
+          <div className="h-5/6 w-full bg-zinc-900 mx-1 mt-1 mb-2 shadow-xl rounded-md"></div>
+        </div>
+        <div className="flex flex-col text-center  h-screen justify-evenly md:items-center text-black w-4/6  pl-2">
+          <div className="h-full w-full bg-zinc-900 mx-1 my-2 shadow-xl rounded-md"></div>
+        </div>
+        <div className="flex flex-col text-center  h-screen justify-evenly md:items-center text-black w-1/6  pl-2 pr-2">
+          <div className="h-full w-full bg-zinc-900 shadow-xl rounded-md mx-5 my-2 "></div>
+        </div>
       </div>
     </>
   );
