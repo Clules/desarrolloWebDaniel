@@ -42,6 +42,7 @@ function App() {
     );
 
     const pokemonImg = await Promise.all(dataPromises);
+
     setPokemones(pokemonImg);
     console.log(pokemonImg);
   };

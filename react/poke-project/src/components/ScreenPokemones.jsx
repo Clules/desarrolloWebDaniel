@@ -39,7 +39,6 @@ const ScreenPokemones = ({ pokemones, position, selected, gif }) => {
                     }
               }
             >
-              {console.log("load")}
               <img
                 src={pokemon.sprites.front_default}
                 alt="front-default"

@@ -7,17 +7,15 @@ const BattleFight = ({
   setAttackMenu,
   positionUD,
   selected,
+  myPokeSelection,
 }) => {
   console.log(positionUD);
   console.log(attackMenu);
-  const attackList = [
-    "water attack",
-    "fire attack",
-    "earth attack",
-    "lo attack",
-    "mas attack",
-    "chi attack",
-  ];
+
+  //const moves = myPokeSelection.moves;
+
+  //const ahuevo =
+  console.log(myPokeSelection);
   return (
     <div>
       {!attackMenu ? (
@@ -27,21 +25,20 @@ const BattleFight = ({
           </div>
         ) : (
           <div className="text-on-top">
-            <div className="pop-outin">Press 'a' to attack...</div>
+            <div className="pop-outin">Press 'a' to attack..</div>
           </div>
         )
       ) : (
         <div className="attack-list">
-          {attackList.map((ataque, index) => (
+          {myPokeSelection[0].moves.map((ataque, index) => (
             <div
               className="attack-name"
-              key={ataque}
               style={{
                 backgroundColor: index == positionUD ? "blue" : "white",
                 color: index == positionUD ? "white" : "black ",
               }}
             >
-              {ataque}
+              {ataque.move.name}
             </div>
           ))}
         </div>

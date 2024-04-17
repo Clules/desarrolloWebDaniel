@@ -58,6 +58,7 @@ const Start = ({
             setAttackMenu={setAttackMenu}
             positionUD={positionUD}
             selected={selected}
+            myPokeSelection={poke1}
           />
 
           <div className="layout-poke-comp">
