@@ -1,8 +1,54 @@
+import React, { useState } from "react";
+
+import { fetchSpotifyApi } from "../../api/spotifyAPI";
+import { useNavigate } from "react-router-dom";
+
 const Register = () => {
+  const [form, setForm] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleOnChange = (e) => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+    const newValues = {
+      ...form,
+      [e.target.name]: e.target.value,
+    };
+    console.log(newValues);
+    setForm(newValues);
+  };
+
+  const handleLogin = async () => {
+    const client_id = "41ba1a8c200940ae8e398229944e8a43";
+    const client_secret = "2420d524c6c3495d90c37dfa7110227d";
+    const url = "https://accounts.spotify.com/api/token";
+    const body = "grant_type=client_credentials";
+    const token = "Basic " + btoa(client_id + ":" + client_secret);
+    const response = await fetchSpotifyApi(
+      url,
+      "POST",
+      body,
+      "application/x-www-form-urlencoded",
+      token
+    );
+    console.log(response);
+    navigate("/dashboard");
+  };
+
+  const goBack = (a) => {
+    navigate(a);
+  };
   return (
     <>
       <div
-        className="container px-5 mx-auto pt-3 pb-3 min-w-dvh"
+        className="container px-5 mx-auto pt-3 pb-3 min-w-dvh f-full"
         style={{
           background:
             "linear-gradient(to right, rgba(0,0,0,.2),rgba(0,255,0,.7))",
@@ -26,9 +72,11 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  id="name"
+                  name="name"
                   placeholder="Please insert your name"
                   className="appearance-none border-2 border-gray-300 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+                  onChange={handleOnChange}
+                  value={form.name}
                 />
               </div>
               <div id="input" className="flex flex-col w-full my-5">
@@ -37,9 +85,11 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  id="username"
+                  name="username"
                   placeholder="Please insert your username"
                   className="appearance-none border-2 border-gray-300 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+                  onChange={handleOnChange}
+                  value={form.username}
                 />
               </div>
               <div id="input" className="flex flex-col w-full my-5">
@@ -47,10 +97,12 @@ const Register = () => {
                   Email
                 </label>
                 <input
-                  type="email"
-                  id="email"
+                  type="text"
+                  name="email"
                   placeholder="Please insert your email"
                   className="appearance-none border-2 border-gray-300 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+                  onChange={handleOnChange}
+                  value={form.email}
                 />
               </div>
               <div id="input" className="flex flex-col w-full my-5">
@@ -58,10 +110,12 @@ const Register = () => {
                   Password
                 </label>
                 <input
-                  type="password"
-                  id="password"
+                  type="text"
+                  name="password"
                   placeholder="Please insert your password"
                   className="appearance-none border-2 border-gray-300 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+                  onChange={handleOnChange}
+                  value={form.password}
                 />
               </div>
               <div id="input" className="flex flex-col w-full my-5">
@@ -72,16 +126,19 @@ const Register = () => {
                   Confirm Password
                 </label>
                 <input
-                  type="password"
-                  id="confirm-password"
+                  type="text"
+                  name="confirm-password"
                   placeholder="Please confirm your password"
                   className="appearance-none border-2 border-gray-300 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+                  onChange={handleOnChange}
+                  value={form.confirmpassword}
                 />
               </div>
               <div id="button" className="flex flex-col w-full my-5">
                 <button
                   type="button"
                   className="w-full py-4 bg-green-600 rounded-lg text-white hover:bg-green-400 hover:text-white mt-4"
+                  onClick={handleLogin}
                 >
                   <div className="flex flex-row items-center justify-center ">
                     <div className="mr-2"></div>
@@ -91,6 +148,7 @@ const Register = () => {
                 <button
                   type="button"
                   className="w-full py-4 bg-gray-600 rounded-lg text-white hover:bg-gray-400 hover:text-white mt-4"
+                  onClick={() => goBack("/login")}
                 >
                   <div className="flex flex-row items-center justify-center ">
                     <div className="mr-2"></div>
