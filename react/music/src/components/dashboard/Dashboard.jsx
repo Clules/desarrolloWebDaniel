@@ -49,7 +49,7 @@ const Dashboard = () => {
             </button>
           </div>
           <div className="h-5/6 w-full bg-zinc-900 mx-1 mt-1 mb-2 shadow-xl rounded-md ">
-            <div class="relative rounded-lg px-1 py-0 my-2 mx-0 h-2/12 flex flex-row text-white stroke-white fill-white hover:text-green-500 hover:fill-green-500 hover:stroke-green-500 hover:underline">
+            <div class="relative rounded-lg px-1 py-0 my-2 mx-0 h-2/12 flex flex-row items-stretch text-white stroke-white fill-white hover:text-green-500 hover:fill-green-500 hover:stroke-green-500 hover:underline">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 50 50"
@@ -84,7 +84,7 @@ const Dashboard = () => {
             >
               <div className="flex flex-row items-center justify-center ">
                 <div className="mr-2"></div>
-                <div className="font-bold ">Login</div>
+                <div className="font-bold ">Search</div>
               </div>
             </button>
           </div>

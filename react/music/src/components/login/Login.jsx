@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Slideshow from "../slideshow/Slideshow";
 
 const Login = () => {
+  const images = [
+    "/src/spotify-icons-logos/spotify-icons-logos/logos/01_RGB/02_PNG/Spotify_Logo_RGB_Green.png",
+    "/src/spotify-icons-logos/spotify-icons-logos/logos/01_RGB/02_PNG/Spotify_Logo_RGB_White.png",
+  ];
+
   const navigate = useNavigate();
 
   const handleLogin = (a) => {
@@ -10,24 +16,18 @@ const Login = () => {
   return (
     <>
       <div
-        className="container px-5 mx-auto w-fit"
+        className="md:container md:mx-0 "
         style={{
-          background:
-            "linear-gradient(to right, rgba(0,0,0,.4),rgba(0,255,0,.7))",
+          backgroundColor:
+            // "linear-gradient(to right, rgba(0,0,0,.4),rgba(0,255,0,.7))"
+            "rgb(9 9 11)",
         }}
       >
-        <div className="flex flex-col text-center md:text-left md:flex-row h-screen justify-evenly md:items-center">
-          <div className="flex flex-col w-full">
-            <div>
-              <img
-                src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
-                alt="spoti-intro"
-                style={{ width: "70%" }}
-              />
-            </div>
-          </div>
-          <div className="w-full md:w-full lg:w-3/4 mx-auto md:mx-0 mr-10">
-            <div className="bg-white p-10 flex flex-col w-full shadow-xl rounded-xl ">
+        <Slideshow images={images} />
+
+        <div className="flex flex-row h-screen w-screen justify-center items-center bg-zync-950">
+          <div className="w-1/3 flex justify-around items-center">
+            <div className="bg-white h-2/3 px-10 pt-10 pb-5 flex flex-col w-full rounded-xl shadow-md shadow-gray-400 mt-10">
               <h2 className="text-2xl font-bold text-gray-800 text-left mb-5">
                 Login
               </h2>
@@ -104,6 +104,37 @@ const Login = () => {
                       </svg>
                     </span>
                     <span>Sign in with Google</span>
+                  </button>
+                  <button class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative hover:bg-black hover:text-white hover:underline mt-2">
+                    <span class="absolute left-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 48 48"
+                        width="27px"
+                        height="27px"
+                      >
+                        <linearGradient
+                          id="Ld6sqrtcxMyckEl6xeDdMa"
+                          x1="9.993"
+                          x2="40.615"
+                          y1="9.993"
+                          y2="40.615"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset="0" stop-color="#2aa4f4" />
+                          <stop offset="1" stop-color="#007ad9" />
+                        </linearGradient>
+                        <path
+                          fill="url(#Ld6sqrtcxMyckEl6xeDdMa)"
+                          d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"
+                        />
+                      </svg>
+                    </span>
+                    <span>Sign in with Facebook</span>
                   </button>
 
                   <div className="flex justify-evenly mt-5">

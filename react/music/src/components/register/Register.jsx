@@ -127,7 +127,7 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  name="confirm-password"
+                  name="confirmpassword"
                   placeholder="Please confirm your password"
                   className="appearance-none border-2 border-gray-300 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
                   onChange={handleOnChange}
