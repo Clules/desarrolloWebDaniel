@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slideshow from "../slideshow/Slideshow";
+import StarsBackground from "../stars/StarsBackground";
 
 const Login = () => {
   const images = [
@@ -16,18 +17,20 @@ const Login = () => {
   return (
     <>
       <div
-        className="md:container md:mx-0 "
+        className="md:container md:mx-0 relative"
         style={{
           backgroundColor:
             // "linear-gradient(to right, rgba(0,0,0,.4),rgba(0,255,0,.7))"
             "rgb(9 9 11)",
         }}
       >
+        <StarsBackground />
+
         <Slideshow images={images} />
 
-        <div className="flex flex-row h-screen w-screen justify-center items-center bg-zync-950">
+        <div className="flex flex-row h-screen w-screen justify-center items-center bg-zync-950 absolute inset-0">
           <div className="w-1/3 flex justify-around items-center">
-            <div className="bg-white h-2/3 px-10 pt-10 pb-5 flex flex-col w-full rounded-xl shadow-md shadow-gray-400 mt-10">
+            <div className="bg-white h-2/3 px-10 pt-10 pb-5 flex flex-col w-full rounded-xl mt-10">
               <h2 className="text-2xl font-bold text-gray-800 text-left mb-5">
                 Login
               </h2>
@@ -55,7 +58,7 @@ const Login = () => {
                   />
                   <a
                     href="#"
-                    className="text-xs w-full text-left font-medium text-gray-500 hover:text-black mt-2"
+                    className="text-xs w-full text-left font-medium text-gray-500 hover:text-black hover:underline mt-2"
                   >
                     Forgot password?!
                   </a>
@@ -71,19 +74,19 @@ const Login = () => {
                       <div className="font-bold ">Login</div>
                     </div>
                   </button>
-                  <div class="flex justify-center items-center mt-5 mb-5">
-                    <span class="w-full border border-black"></span>
-                    <span class="px-4">Or</span>
-                    <span class="w-full border border-black"></span>
+                  <div className="flex justify-center items-center mt-5 mb-5">
+                    <span className="w-full border border-black"></span>
+                    <span className="px-4">Or</span>
+                    <span className="w-full border border-black"></span>
                   </div>
-                  <button class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative hover:bg-black hover:text-white hover:underline">
-                    <span class="absolute left-4">
+                  <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative hover:bg-black hover:text-white hover:underline">
+                    <span className="absolute left-4">
                       <svg
                         width="24px"
                         height="24px"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
                       >
                         <path
                           fill="#EA4335 "
@@ -105,8 +108,8 @@ const Login = () => {
                     </span>
                     <span>Sign in with Google</span>
                   </button>
-                  <button class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative hover:bg-black hover:text-white hover:underline mt-2">
-                    <span class="absolute left-4">
+                  <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative hover:bg-black hover:text-white hover:underline mt-2">
+                    <span className="absolute left-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 48 48"
@@ -121,8 +124,8 @@ const Login = () => {
                           y2="40.615"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop offset="0" stop-color="#2aa4f4" />
-                          <stop offset="1" stop-color="#007ad9" />
+                          <stop offset="0" stopColor="#2aa4f4" />
+                          <stop offset="1" stopColor="#007ad9" />
                         </linearGradient>
                         <path
                           fill="url(#Ld6sqrtcxMyckEl6xeDdMa)"

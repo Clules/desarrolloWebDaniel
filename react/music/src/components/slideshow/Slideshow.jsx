@@ -6,13 +6,13 @@ const Slideshow = ({ images }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
-    <div className="absolute top-0 left-0 w-24 h-24 m-4">
+    <div className="absolute top-0 left-0 w-52 h-52 m-4">
       {images.map((src, index) => (
         <img
           key={index}
