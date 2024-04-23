@@ -47,6 +47,9 @@ const Register = () => {
       token
     );
     console.log(response);
+
+    localStorage.setItem("token", response.access_token);
+
     navigate("/dashboard");
   };
 
