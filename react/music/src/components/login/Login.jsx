@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
+import { fetchSpotifyApi } from "../../api/spotifyAPI";
+
 import Slideshow from "../slideshow/Slideshow";
 import StarsBackground from "../stars/StarsBackground";
 
@@ -9,11 +12,41 @@ const Login = () => {
     "/src/spotify-icons-logos/spotify-icons-logos/logos/01_RGB/02_PNG/Spotify_Logo_RGB_White.png",
   ];
 
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleOnChange = (e) => {
+    const newValues = {
+      ...form,
+      [e.target.name]: e.target.value,
+    };
+    console.log(newValues);
+    setForm(newValues);
+  };
+
   const navigate = useNavigate();
 
-  const handleLogin = (a) => {
+  const handleLogin = async (a) => {
+    const client_id = "41ba1a8c200940ae8e398229944e8a43";
+    const client_secret = "2420d524c6c3495d90c37dfa7110227d";
+    const url = "https://accounts.spotify.com/api/token";
+    const body = "grant_type=client_credentials";
+    const token = "Basic " + btoa(client_id + ":" + client_secret);
+    const response = await fetchSpotifyApi(
+      url,
+      "POST",
+      body,
+      "application/x-www-form-urlencoded",
+      token
+    );
+    console.log(response);
+
+    localStorage.setItem("token", response.access_token);
     navigate(a);
   };
+
   return (
     <>
       <div
@@ -41,7 +74,9 @@ const Login = () => {
                   </label>
                   <input
                     type="text"
-                    id="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleOnChange}
                     placeholder="Please insert your username or email"
                     className="appearance-none border-2 border-gray-200 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
                   />
@@ -51,8 +86,10 @@ const Login = () => {
                     Password
                   </label>
                   <input
-                    type="password"
-                    id="password"
+                    type="text"
+                    name="password"
+                    value={form.password}
+                    onChange={handleOnChange}
                     placeholder="Please insert your password"
                     className="appearance-none border-2 border-gray-200 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
                   />
