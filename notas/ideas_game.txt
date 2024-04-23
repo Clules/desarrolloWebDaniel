@@ -4,7 +4,21 @@
 1. Duelo estilo cowboys 
 2. Adentro de un contenedor
 3. No puedes pasar de la mitad
-4. Caen items del cielo al igual que bombas o trampas
-5. Personajes cagados
-6. Pueden escalar paredes
+4. Empiezas con poca ammo
+5. Personajes cagados (aliens cowboys)
+6. Pueden escalar/deslizar paredes
 7. 1v1
+8. Armas random
+9. Caen items del cielo al igual que bombas o trampas
+10. Items desaparecen cada cierto tiempo
+11. Items:
+	-JetPack
+	-Cajas/Obstáculos
+	-Granadas/Objetos peligrosos
+	-Curación/Med kits
+	-Balas
+	-Escudos
+	-Mollys
+
+	
+	
