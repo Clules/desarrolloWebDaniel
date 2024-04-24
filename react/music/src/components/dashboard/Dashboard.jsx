@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { fetchSpotifyApi } from "../../api/spotifyAPI";
 import StarsBackground from "../stars/StarsBackground";
+import { getDataAuth } from "../../setup";
+import { authFLow } from "../../setup";
 
 const Dashboard = () => {
   const [search, setSearch] = useState({
@@ -24,6 +26,7 @@ const Dashboard = () => {
 
   const handleOnChange = (e) => {
     setSongs([]);
+
     const newValues = {
       ...search,
       [e.target.name]: e.target.value,
@@ -59,11 +62,13 @@ const Dashboard = () => {
 
     if (option == "track") {
       setSongs(
-        response.tracks.items.map((song) => ({
+        response[`${option}s`].items.map((song) => ({
+          id: song.id,
           name: song.name,
           artist: song.artists[0].name,
           album: song.album.name,
           image: song.album.images[0].url,
+          uri: song.uri,
           duration: `${Math.floor(song.duration_ms / 60000)}:${(
             (song.duration_ms % 60000) /
             1000
@@ -72,30 +77,78 @@ const Dashboard = () => {
             .padStart(2, "0")}`,
         }))
       );
-    } else {
-      console.log(option);
+    } else if (option == "artist") {
+      setSongs(
+        response[`${option}s`].items.map((song) => ({
+          name: song.name,
+          image: song.album.images[0].url,
+        }))
+      );
     }
   };
 
-  const handlePlaylist = async () => {
-    const url = "https://api.spotify.com/v1/me";
-
+  const handlePlayMusic = async (song) => {
     const token = `Bearer ${localStorage.getItem("token")}`;
+    const data = {
+      uris: [song],
+    };
 
-    const response = await fetchSpotifyApi(
-      url,
-      "GET",
-      null,
+    console.log(song);
+    // const getDeviceId = await fetchSpotifyApi(
+    //   `https://api.spotify.com/v1/me/player/devices`,
+    //   "GET",
+    //   null,
+    //   "application/json",
+    //   token
+    // );
+
+    const id_device = "f67750df866cecb5b93646defd8f57995263c0df";
+
+    const playSong = await fetchSpotifyApi(
+      `https://api.spotify.com/v1/me/player/play?device_id=${id_device}`,
+      "PUT",
+      JSON.stringify(data),
       "application/json",
       token
     );
-    console.log(response);
+    console.log(playSong);
   };
 
   const handleSelectChange = (e) => {
     console.log(e.target.value);
     setOption(e.target.value);
   };
+
+  const getToken = async () => {
+    // stored in the previous step
+    const urlParams = new URLSearchParams(window.location.search);
+    let code = urlParams.get("code");
+    let codeVerifier = localStorage.getItem("code_verifier");
+    console.log({ codeVerifier });
+    const url = "https://accounts.spotify.com/api/token";
+    const clientId = "41ba1a8c200940ae8e398229944e8a43";
+    const redirectUri = "http://127.0.0.1:5173/dashboard";
+    const payload = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        client_id: clientId,
+        grant_type: "authorization_code",
+        code,
+        redirect_uri: redirectUri,
+        code_verifier: codeVerifier,
+      }),
+    };
+
+    const body = await fetch(url, payload);
+    const response = await body.json();
+
+    localStorage.setItem("token", response.access_token);
+    console.log(response);
+  };
+
   return (
     <>
       <div
@@ -109,7 +162,10 @@ const Dashboard = () => {
             <div className="h-1/6 w-full bg-zinc-900 mx-1 mt-2 mb-1 shadow-xl rounded-md flex flex-col justify-around py-9 items-start">
               {" "}
               {/*home div */}
-              <button className="relative rounded-lg w-full px-1 py-3 my-1 mx-0 h-10 flex flex-row text-white stroke-white fill-white hover:text-green-500 hover:fill-green-500 hover:stroke-green-500 hover:underline justify-start items-center ">
+              <button
+                className="relative rounded-lg w-full px-1 py-3 my-1 mx-0 h-10 flex flex-row text-white stroke-white fill-white hover:text-green-500 hover:fill-green-500 hover:stroke-green-500 hover:underline justify-start items-center "
+                onClick={() => getToken()}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 50 50"
@@ -147,7 +203,7 @@ const Dashboard = () => {
               <div className="relative rounded-lg w-full px-1 py-0 my-2 mx-0 h-2/12 flex flex-row justify-between">
                 <div
                   className=" text-white stroke-white  w-2/3 ml-3 fill-white hover:text-green-500 hover:fill-green-500 hover:stroke-green-500 hover:underline items-center flex flex-row cursor-pointer"
-                  onClick={handlePlaylist}
+                  // onClick={handleAuth}
                 >
                   <svg
                     width="20"
@@ -276,10 +332,11 @@ const Dashboard = () => {
                 </div>
               </button>
               <div className="flex flex-col justify-start mt-2  h-full text-white text-xs  overflow-auto flex-grow">
-                {songs.map((song, index) => (
+                {songs.map((song) => (
                   <div
-                    key={song.name + index}
+                    key={song.id}
                     className="flex flex-row m-1 align-middle hover:bg-zinc-600 p-2 justify-between group items-center"
+                    onClick={() => handlePlayMusic(song.uri)}
                   >
                     <div className="relative">
                       <img

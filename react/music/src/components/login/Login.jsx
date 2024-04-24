@@ -6,6 +6,9 @@ import { fetchSpotifyApi } from "../../api/spotifyAPI";
 import Slideshow from "../slideshow/Slideshow";
 import StarsBackground from "../stars/StarsBackground";
 
+import { getDataAuth } from "../../setup";
+import { authFLow } from "../../setup";
+
 const Login = () => {
   const images = [
     "/src/spotify-icons-logos/spotify-icons-logos/logos/01_RGB/02_PNG/Spotify_Logo_RGB_Green.png",
@@ -28,22 +31,29 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = async (a) => {
-    const client_id = "41ba1a8c200940ae8e398229944e8a43";
-    const client_secret = "2420d524c6c3495d90c37dfa7110227d";
-    const url = "https://accounts.spotify.com/api/token";
-    const body = "grant_type=client_credentials";
-    const token = "Basic " + btoa(client_id + ":" + client_secret);
-    const response = await fetchSpotifyApi(
-      url,
-      "POST",
-      body,
-      "application/x-www-form-urlencoded",
-      token
-    );
-    console.log(response);
+  // const handleLogin = async (a) => {
+  //   const client_id = "41ba1a8c200940ae8e398229944e8a43";
+  //   const client_secret = "2420d524c6c3495d90c37dfa7110227d";
+  //   const url = "https://accounts.spotify.com/api/token";
+  //   const body = "grant_type=client_credentials";
+  //   const token = "Basic " + btoa(client_id + ":" + client_secret);
+  //   const response = await fetchSpotifyApi(
+  //     url,
+  //     "POST",
+  //     body,
+  //     "application/x-www-form-urlencoded",
+  //     token
+  //   );
+  //   console.log(response);
 
-    localStorage.setItem("token", response.access_token);
+  //   localStorage.setItem("token", response.access_token);
+  //   navigate(a);
+  // };
+
+  const handleAuth = async (a) => {
+    const codeC = await getDataAuth();
+    console.log(codeC);
+    authFLow(codeC);
     navigate(a);
   };
 
@@ -104,7 +114,7 @@ const Login = () => {
                   <button
                     type="button"
                     className="w-full py-4 bg-green-600 rounded-lg text-green-100 hover:bg-green-400 hover:text-white hover:underline"
-                    onClick={() => handleLogin("/dashboard")}
+                    onClick={() => handleAuth("/dashboard")}
                   >
                     <div className="flex flex-row items-center justify-center ">
                       <div className="mr-2"></div>

@@ -30,8 +30,8 @@ export const getDataAuth = async () => {
 };
 
 export const authFLow = (codeChallenge) => {
-  const clientId = "your_client_id";
-  const redirectUri = "http://localhost:5173/";
+  const clientId = "41ba1a8c200940ae8e398229944e8a43";
+  const redirectUri = "http://127.0.0.1:5173/dashboard";
 
   const scope =
     "user-read-playback-state user-modify-playback-state user-read-private user-read-email";
