@@ -20,6 +20,7 @@ const Dashboard = () => {
   const [deviceSel, setDeviceSel] = useState("");
   const [playlists, setPlaylists] = useState([]);
   const [playlistID, setPlaylistID] = useState("");
+  const [current, setCurrent] = useState([]);
 
   const [show, setShow] = useState(2);
 
@@ -190,6 +191,20 @@ const Dashboard = () => {
     }
   };
 
+  const handleCurrent = async () => {
+    const token = `Bearer ${localStorage.getItem("token")}`;
+
+    const response = await fetchSpotifyApi(
+      `https://api.spotify.com/v1/me/player/currently-playing`,
+      "GET",
+      null,
+      "application/json",
+      token
+    );
+    console.log(response);
+    setCurrent(response);
+  };
+
   const getToken = async () => {
     // stored in the previous step
     const urlParams = new URLSearchParams(window.location.search);
@@ -198,7 +213,7 @@ const Dashboard = () => {
     console.log({ codeVerifier });
     const url = "https://accounts.spotify.com/api/token";
     const clientId = "41ba1a8c200940ae8e398229944e8a43";
-    const redirectUri = `${hostP}dashboard`;
+    const redirectUri = `${hostL}dashboard`;
     const payload = {
       method: "POST",
       headers: {
@@ -407,6 +422,8 @@ const Dashboard = () => {
                   playlists={playlistID}
                   deviceSel={deviceSel}
                   color={color}
+                  current={current}
+                  setCurrent={setCurrent}
                 />
               ) : show == 2 ? (
                 <div className="h-screen flex flex-col mb-10">
@@ -457,7 +474,9 @@ const Dashboard = () => {
                       <div
                         key={song.id}
                         className="flex flex-row m-1 align-middle hover:bg-zinc-600 p-2 justify-between group items-center"
-                        onClick={() => handlePlayMusic(song.uri)}
+                        onClick={() => (
+                          handlePlayMusic(song.uri), handleCurrent()
+                        )}
                       >
                         <div className="relative">
                           <img
@@ -653,6 +672,41 @@ const Dashboard = () => {
               </select>
             </div>
           </div>
+          {current.length != 0 ? (
+            <div className="fixed bottom-0 left-0 w-full bg-zinc-800  h-24 z-10 text-white justify-center flex flex-row items-center">
+              <div className="text-lg text-white font-normal items-center mx-12">
+                Currently playing:{" "}
+              </div>
+              <div className="relative flex flex-row m-3 items-center ">
+                <img
+                  src={current.item.album.images[0].url}
+                  alt={current.item.name}
+                  className="w-12 mr-2 rounded-md"
+                />
+                <div className="flex flex-col text-left flex-grow ">
+                  <div className="hover:underline w-max cursor-pointer">
+                    {current.item.name}
+                  </div>
+                  <div className="flex flex-row text-[rgba(167,167,167,255)] group-hover:text-white">
+                    <div
+                      className="hover:underline cursor-pointer"
+                      style={{ fontWeight: "10", fontSize: "0.6rem" }}
+                    >
+                      {current.item.artists[0].name}
+                    </div>
+                    <div
+                      className="ml-1 hover:underline cursor-pointer"
+                      style={{ fontWeight: "10", fontSize: "0.6rem" }}
+                    >
+                      {current.item.album.name}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            console.log("yei")
+          )}
         </div>
       </div>
     </>

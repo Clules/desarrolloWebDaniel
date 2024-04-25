@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { fetchSpotifyApi } from "../../api/spotifyAPI";
 
-const Playlist = ({ playlists, deviceSel, color }) => {
+const Playlist = ({ playlists, deviceSel, color, current, setCurrent }) => {
   const handlePlayMusic = async (song) => {
     const token = `Bearer ${localStorage.getItem("token")}`;
     const data = {
@@ -23,12 +23,22 @@ const Playlist = ({ playlists, deviceSel, color }) => {
       alert("Device not selected");
     }
   };
+  const handleCurrent = async () => {
+    const token = `Bearer ${localStorage.getItem("token")}`;
+
+    const response = await fetchSpotifyApi(
+      `https://api.spotify.com/v1/me/player/currently-playing`,
+      "GET",
+      null,
+      "application/json",
+      token
+    );
+    console.log(response);
+    setCurrent(response);
+  };
 
   const colors = ["yellow", "cyan", "violet", "rose", "red", "orange", "lime"];
   const colorClass = colors[color];
-  console.log(
-    `flex flex-col justify-start mt-2 h-full w-full text-white text-xs overflow-hidden flex-grow bg-gradient-to-b from-${colorClass}-500  from-10% to-60%`
-  );
 
   return (
     <div
@@ -78,7 +88,10 @@ const Playlist = ({ playlists, deviceSel, color }) => {
               <div
                 className="flex flex-row h-auto w-100 text-[rgba(167,167,167,255)] text-sm justify-between z-10 mx-4 ml-1 font-medium text-white items-center group hover:bg-zinc-600 hover:bg-opacity-40"
                 style={{ fontSize: "0.6rem" }}
-                onClick={() => handlePlayMusic(song.track.uri)}
+                onClick={() => (
+                  handlePlayMusic(song.track.uri), handleCurrent()
+                )}
+                key={song.track.name + index}
               >
                 <div className="relative">
                   <div className="w-4 text-left pl-1 mr-0 text-center opacity-100  transition-opacity duration-300 group-hover:opacity-0">

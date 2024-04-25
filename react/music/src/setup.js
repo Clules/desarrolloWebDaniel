@@ -31,10 +31,10 @@ export const getDataAuth = async () => {
 
 export const authFLow = (codeChallenge) => {
   const clientId = "41ba1a8c200940ae8e398229944e8a43";
-  const redirectUri = "http://localhost:5173/dashboard";
+  const redirectUri = "http://127.0.0.1:5173/dashboard";
 
   const scope =
-    "playlist-read-collaborative user-read-playback-state user-modify-playback-state user-read-private user-read-email playlist-read-collaborative playlist-read-private";
+    "playlist-read-collaborative user-read-playback-state user-modify-playback-state user-read-private user-read-email playlist-read-collaborative playlist-read-private user-read-currently-playing";
   const authUrl = new URL("https://accounts.spotify.com/authorize");
   const params = {
     response_type: "code",
