@@ -7,8 +7,9 @@ function cesarCipher(str, idx) {
   let alpha = "abcdefghijklmnopqrstuvwxyz";
 
   for (letter of str) {
-    let index = alpha.indexOf(letter);
     letter = letter.toLowerCase();
+
+    let index = alpha.indexOf(letter);
     if (index !== -1) {
       let newIndex = (index + idx) % 26;
       let newLetter = alpha[newIndex];
