@@ -6,7 +6,7 @@ const getToken = async () => {
   console.log({ codeVerifier });
   const url = "https://accounts.spotify.com/api/token";
   const clientId = "41ba1a8c200940ae8e398229944e8a43";
-  const redirectUri = "http://127.0.0.1:5173/";
+  const redirectUri = "http://localhost:5173/";
   const payload = {
     method: "POST",
     headers: {

@@ -213,7 +213,7 @@ const Dashboard = () => {
     console.log({ codeVerifier });
     const url = "https://accounts.spotify.com/api/token";
     const clientId = "41ba1a8c200940ae8e398229944e8a43";
-    const redirectUri = `${hostL}dashboard`;
+    const redirectUri = `${hostP}dashboard`;
     const payload = {
       method: "POST",
       headers: {
