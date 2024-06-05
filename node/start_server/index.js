@@ -6,6 +6,9 @@ const app = express();
 const port = 3000;
 
 const userRoutes = require("./routes/userRoutes");
+const descriptionRoutes = require("./routes/descriptionRoutes");
+const feedbackRoutes = require("./routes/feedbackRoutes");
+const chatRoutes = require("./routes/chatOpenRoutes");
 
 app.use(cors());
 
@@ -25,6 +28,9 @@ app.listen(port, () => {
 });
 
 app.use("/users", userRoutes);
+app.use("/descripcion", descriptionRoutes);
+app.use("/feedback", feedbackRoutes);
+app.use("/chat", chatRoutes);
 // app.use(bodyParser.json());
 // app.use(
 //   bodyParser.urlencoded({
