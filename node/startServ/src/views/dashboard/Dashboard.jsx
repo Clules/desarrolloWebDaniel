@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import NavigationBar from "../../shared/NavigationBar";
+import "../dashboard/Dashboard.css";
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
@@ -62,7 +63,13 @@ const Dashboard = () => {
         </ul>
       ))} */}
       <NavigationBar setQuery={setQuery}>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "10px", // Adjust the gap between items
+          }}
+        >
           {users
             .filter((user) => user.name.includes(query))
             .map((userd) => (
@@ -71,8 +78,10 @@ const Dashboard = () => {
                 style={{
                   margin: "5px",
                   padding: "1%",
+                  flex: "1 0 2%", // Adjust the percentage to control the number of columns
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "start",
+                  boxSizing: "border-box",
                 }}
               >
                 <Card user={userd} />

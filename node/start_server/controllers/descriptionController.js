@@ -23,10 +23,10 @@ async function getDescriptionByID(req, res) {
 
 async function createDescription(req, res) {
   try {
-    const { descripcion, prescription } = req.body;
+    const { description, prescription } = req.body;
     const { userId } = req.params;
     const newDescription = await DescriptionModel.createDescription(
-      descripcion,
+      description,
       prescription,
       userId
     );

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import userImage from "../../../assets/user.svg";
+import "../Dashboard.css";
 
 const Card = ({ user }) => {
   const navigate = useNavigate();
@@ -12,11 +13,9 @@ const Card = ({ user }) => {
   return (
     <div
       style={{
-        width: "25%",
-        height: "10%",
-        backgroundColor: "black",
+        width: "300px",
+        height: "150px",
         boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
-        borderRadius: "8px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -24,6 +23,7 @@ const Card = ({ user }) => {
         color: "white",
         cursor: "pointer",
       }}
+      className="cardUser"
       onClick={handleClick}
     >
       <div>

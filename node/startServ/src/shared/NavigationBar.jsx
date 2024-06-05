@@ -1,5 +1,6 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import "./NavBar.css";
 
 const NavigationBar = ({ children, setQuery }) => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const NavigationBar = ({ children, setQuery }) => {
           <div
             style={{ display: "flex", cursor: "pointer", alignItems: "center" }}
             onClick={() => handleNavigate("")}
+            className="navtext"
           >
             <IoHomeOutline />
             <p>Dashboard</p>
@@ -43,6 +45,7 @@ const NavigationBar = ({ children, setQuery }) => {
           <p
             style={{ cursor: "pointer" }}
             onClick={() => handleNavigate("register")}
+            className="navtext"
           >
             Registro
           </p>
@@ -56,6 +59,7 @@ const NavigationBar = ({ children, setQuery }) => {
             type="text"
             placeholder="Buscar por nombre"
             onChange={handleChange}
+            className="navtext"
           />
         </div>
 

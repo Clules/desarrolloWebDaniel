@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../components/Form.css";
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -44,7 +45,7 @@ const Form = () => {
         justifyContent: "space-around",
         flexDirection: "column",
         width: "90%",
-        aspectRatio: "1.5",
+        aspectRatio: "1.2",
       }}
     >
       <h1>Form</h1>
@@ -97,9 +98,7 @@ const Form = () => {
             style={{
               height: "50px",
               width: "100px",
-              backgroundColor: "#A4B6A3",
               border: "none",
-              color: "white",
             }}
             type="submit"
             onClick={handleSumbitForm}

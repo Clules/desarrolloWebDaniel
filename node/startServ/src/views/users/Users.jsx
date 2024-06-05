@@ -5,12 +5,13 @@ import userimg from "../../assets/user.svg";
 import PrevDescription from "./components/PrevDescription";
 import CardInfo from "./components/CardInfo";
 import NavigationBar from "../../shared/NavigationBar";
+import "./Users.css";
 
 const Users = () => {
   const { id } = useParams();
   const [descrip, setDescrip] = useState([]);
-  const [form, setForm] = useState({ descripcion: "", prescription: "" });
-
+  const [form, setForm] = useState({ description: "", prescription: "" });
+  const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState([]);
 
   const navigate = useNavigate();
@@ -23,25 +24,32 @@ const Users = () => {
 
   const generateHelp = async () => {
     const prompt = {
-      prompt: form.descripcion,
+      prompt: form.description,
     };
-    const response = await fetch(`http://localhost:3000/chat/gemini`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(prompt),
-    });
-    const data = await response.json();
-    console.log(data);
+    setIsLoading(true);
+    try {
+      const response = await fetch(`http://localhost:3000/chat/gemini`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(prompt),
+      });
+      const data = await response.json();
+      console.log(data);
 
-    const responseT = data.response;
-    console.log(responseT);
-    setForm({
-      descripcion: form.descripcion,
-      prescription: responseT,
-    });
-    return data;
+      const responseT = data.response;
+      console.log(responseT);
+      setForm({
+        description: form.description,
+        prescription: responseT,
+      });
+      setIsLoading(false);
+
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSaveForm = () => {
@@ -49,7 +57,7 @@ const Users = () => {
   };
 
   const fetchDescriptions = async () => {
-    const response = await fetch("http://localhost:3000/descripcion/" + id);
+    const response = await fetch("http://localhost:3000/description/" + id);
     const data = await response.json();
     setDescrip(data);
   };
@@ -72,138 +80,148 @@ const Users = () => {
     navigate("/");
   };
 
-  const handlePrescription = () => {
-    // navigate("/description/" + id);
-    console.log(form);
+  const handlePrescription = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/description/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (res.status === 201) {
+        alert("Guardado Exitosamente!");
+        window.location.reload(); // Reload the page
+      } else {
+        alert("ERROR al guardar");
+      }
+    } catch (error) {
+      alert("Error al registrar");
+    }
   };
   return (
     <>
       <NavigationBar>
         <div
           style={{
-            width: "100%",
-            height: "600px",
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            justifySelf: "center",
-            alignSelf: "center",
+            flexDirection: "column",
+            overflow: "hidden",
           }}
         >
-          <div>
-            <CardInfo user={user} />
-          </div>
-
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignContent: "center",
-              width: "50%",
-              margin: "50px",
+              width: "100%",
+              height: "200px",
+              margin: "20px",
             }}
           >
-            {/* <div
+            <PrevDescription descriptions={descrip} />
+          </div>
+          <div
             style={{
-              color: "white",
-              fontSize: "50px",
+              width: "100%",
+              height: "400px",
               display: "flex",
-              alignItems: "center",
+              flexDirection: "row",
               justifyContent: "center",
+              alignItems: "center",
+              justifySelf: "center",
+              alignSelf: "center",
             }}
           >
-            Name: {descrip[0].name}
-          </div> */}
+            <div>
+              <CardInfo user={user} />
+            </div>
+
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center",
+                justifyContent: "space-around",
                 alignContent: "center",
                 width: "50%",
                 height: "100%",
-                marginRight: "20px",
+                margin: "50px",
               }}
             >
-              <PrevDescription description={descrip} />
-            </div>
-            <div
-              style={{
-                color: "white",
-                fontSize: "20px",
-                display: "flex",
+              <div
+                style={{
+                  color: "white",
+                  fontSize: "20px",
+                  display: "flex",
 
-                alignContent: "center",
-                justifyContent: "left",
-                flexDirection: "column",
-              }}
-            >
-              <p>Descripcion:</p>
-              <textarea
-                name="descripcion"
-                id=""
-                value={form.descripcion}
-                onChange={handleValue}
-              ></textarea>
-              <p>Prescription:</p>
-              <textarea
-                name="prescription"
-                id=""
-                value={form.prescription}
-                onChange={handleValue}
-              ></textarea>
+                  alignContent: "center",
+                  justifyContent: "left",
+                  flexDirection: "column",
+                }}
+              >
+                <p>Description:</p>
+                <textarea
+                  name="description"
+                  id="des"
+                  value={form.description}
+                  onChange={handleValue}
+                  style={{ height: "60px" }}
+                ></textarea>
+                <p>Prescription:</p>
+                <textarea
+                  name="prescription"
+                  id="pres"
+                  value={form.prescription}
+                  onChange={handleValue}
+                  style={{ height: "100px" }}
+                ></textarea>
+              </div>
+              <button
+                style={{
+                  height: "30px",
+                  width: "100px",
+
+                  alignSelf: "center",
+                  marginTop: "5px",
+                }}
+                type="submit"
+                onClick={generateHelp}
+                className="button-menu"
+              >
+                {isLoading ? "Cargando" : "Generar Ejercicio"}
+              </button>
+              <button
+                style={{
+                  height: "30px",
+                  width: "100px",
+                  alignSelf: "center",
+                  marginTop: "5px",
+                }}
+                type="submit"
+                onClick={handlePrescription}
+                className="button-menu"
+              >
+                Guardar
+              </button>
             </div>
+
             <button
               style={{
-                height: "50px",
-                width: "100px",
-                backgroundColor: "#A4B6A3",
-                border: "none",
+                position: "fixed",
+                bottom: 0,
+                left: 0,
+                width: "100%",
+                textAlign: "center",
+                padding: "10px",
+                backgroundColor: "black",
                 color: "white",
-                alignSelf: "center",
-                marginTop: "5px",
-              }}
-              type="submit"
-              onClick={generateHelp}
-            >
-              Generar ejercicio
-            </button>
-            <button
-              style={{
-                height: "50px",
-                width: "100px",
-                backgroundColor: "#A4B6A3",
                 border: "none",
-                color: "white",
-                alignSelf: "center",
-                marginTop: "5px",
+                cursor: "pointer",
               }}
-              type="submit"
-              onClick={handlePrescription}
+              onClick={handleBack}
             >
-              Guardar
+              Back
             </button>
           </div>
-
-          <button
-            style={{
-              position: "fixed",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              textAlign: "center",
-              padding: "10px",
-              backgroundColor: "black",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-            }}
-            onClick={handleBack}
-          >
-            Back
-          </button>
         </div>
       </NavigationBar>
     </>

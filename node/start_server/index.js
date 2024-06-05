@@ -28,7 +28,7 @@ app.listen(port, () => {
 });
 
 app.use("/users", userRoutes);
-app.use("/descripcion", descriptionRoutes);
+app.use("/description", descriptionRoutes);
 app.use("/feedback", feedbackRoutes);
 app.use("/chat", chatRoutes);
 // app.use(bodyParser.json());

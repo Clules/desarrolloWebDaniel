@@ -10,7 +10,7 @@ const Register = () => {
           flexDirection: "row",
           justifyContent: "space-around",
           alignItems: "center",
-          height: "780px",
+          height: "650px",
         }}
       >
         <div style={{ width: "50%" }}>
@@ -24,7 +24,7 @@ const Register = () => {
             justifyContent: "center",
             border: "solid 2px white",
             marginLeft: "15px",
-            backgroundColor: "#4d854a",
+            backgroundColor: "black",
           }}
         >
           <Form />
