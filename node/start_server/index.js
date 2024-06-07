@@ -9,6 +9,7 @@ const userRoutes = require("./routes/userRoutes");
 const descriptionRoutes = require("./routes/descriptionRoutes");
 const feedbackRoutes = require("./routes/feedbackRoutes");
 const chatRoutes = require("./routes/chatOpenRoutes");
+const nearbyyRoutes = require("./routes/nearbyyRoutes");
 
 app.use(cors());
 
@@ -31,6 +32,7 @@ app.use("/users", userRoutes);
 app.use("/description", descriptionRoutes);
 app.use("/feedback", feedbackRoutes);
 app.use("/chat", chatRoutes);
+app.use("/nearbyy", nearbyyRoutes);
 // app.use(bodyParser.json());
 // app.use(
 //   bodyParser.urlencoded({
