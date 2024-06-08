@@ -39,6 +39,7 @@ async function getChunks(query, limit, tag, fileId, apiKey) {
     });
 
     if (response.data.success) {
+      console.log(response.data.data.items[0]);
       return response.data;
     } else {
       throw new Error(response.data.error || "Failed to fetch upload URL");
